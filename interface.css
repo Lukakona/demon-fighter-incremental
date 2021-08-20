@@ -1,0 +1,50 @@
+body {
+    background-color:black;
+}
+
+h1 {
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+
+h2 {
+    color:crimson;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+h3 {
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+.center {
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+}
+
+#heading {
+    text-align: center;
+}
+
+#about_screen {
+    display:none;
+}
