@@ -1,5 +1,4 @@
 //define demons
-var currentDemon;
 let Demons = [];
 class Demon {
     constructor(name, rank, curHealth, maxHealth, speed, vigor, gold, img) {
@@ -29,10 +28,6 @@ function spawnDemon(){
     currentDemon = Demons[randomnum];
     return currentDemon;
 }
-//this creates them as well
-refreshDemons();
-//sets Avia as the first demon always
-currentDemon = Demons[0];
 
 setInterval(function(){
     if(currentDemon.curHealth<=0){
