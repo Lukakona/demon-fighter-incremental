@@ -5,8 +5,16 @@
         <script type="text/javascript" src="main.js"></script>
         <script type="text/javascript" src="img.js"></script>
         <script type="text/javascript" src="monstermanager.js"></script>
+        <script type="text/javascript" src="headerscreens.js"></script>
     </head>
     <body>
+        <!--banner-->
+        <div id="heading">
+            <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
+            <img draggable=false onClick="loadGame()" src="./img/load.png" alt="Load Game">;
+            <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">
+        </div>
+        <!--toggleable about page-->
         <div id="about_screen">
             <h2>About</h2>
             <p>Demon Fighter is an incremental game made to practice Javascript. It was programmed by
@@ -14,12 +22,15 @@
             helpful and lovely artwork by <a target="_blank" href="https://twitter.com/MissMoenstyrwyn">my friend</a>, 
             and <a target="_blank" href="https://twitter.com/Saihalji">my brother</a>.<br>Thanks for playing!</p>
         </div>
+        <!--toggleable reset page-->
+        <div id="reset_screen">
+            <h2>WARNING</h2>
+            <h3>Hitting the confirmation below will reset all saved values.</h3>
+            <h2>YOU CANNOT UNDO THIS</h2>
+            <img draggable=false onClick="resetData()" src="./img/resetconfirm.png" alt="CONFIRM RESET" class="center">
+        </div>
         <!--main screen-->
-        <div id="main">
-            <div id="heading">
-                <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
-                <img draggable=false /*onClick="loadGame()"*/ src="./img/load.png" alt="Load Game">;
-            </div>
+        <div id="main_screen">
             <h3>Stored Power: <span id="power">0</span></h3>
             <h3>Gold: <span id="gold">0</span></h3>
             <img draggable=false src="./img/CYPbutton.png" onClick="powerClick(1)" alt="Click to Charge Your Power!!" class="center">

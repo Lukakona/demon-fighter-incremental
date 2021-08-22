@@ -48,3 +48,7 @@ p {
 #about_screen {
     display:none;
 }
+
+#reset_screen {
+    display:none;
+}

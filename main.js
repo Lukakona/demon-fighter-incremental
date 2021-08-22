@@ -3,6 +3,7 @@ var gold = 0;
 var rank = 0;
 var currentDemon;
 
+//stores power every click
 function powerClick(number){
     power = power + number;
     document.getElementById("power").innerHTML = power;
@@ -43,26 +44,27 @@ function loadGame(){
     console.log(gold);
 }
 
-//about the author (me)
-function toggleAbout(){
-    var about = document.getElementById("about_screen");
-    if(about.style.display == "block"){
-        about.style.display = "none";
-    } else {
-        about.style.display = "block";
-    }
+function resetData(){
+    localStorage.clear();
+    location.reload();
 }
 
 function mainLoop(){
-    //creates all demons and spawns avia as first demon
-    refreshDemons();
+    //if no stored current demon, spawn one. otherwise use stored demon
+    if(typeof currentDemon=="undefined"){
+        spawnDemon();
+    }
+    else{
+        refreshDemons();
+    }
     document.getElementById("gold").innerHTML = gold;
-    //currentDemon = Demons[0];
+    demonCombat();
+    setTimeout(mainLoop, 1000) //loops this function every second
 }
 
+//when the window loads, run these functions
 window.onload = function() {
-    mainLoop();
     loadGame();
     saveGame();
-    document.getElementById("gold").innerHTML = gold;
+    mainLoop();
 }

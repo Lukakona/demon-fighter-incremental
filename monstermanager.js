@@ -23,13 +23,15 @@ function refreshDemons() {
 function spawnDemon(){
     refreshDemons();
     var randomnum;
-    randomnum = Math.floor(Math.random() * ((3+rank) - .2));
-    console.log(randomnum);
+    do{
+        randomnum = Math.floor(Math.random() * ((3+rank) - .2));
+        console.log(randomnum);
+    }while(randomnum>=4); //ensure the number wont hit the rank cap (since theres a chance!)
     currentDemon = Demons[randomnum];
     return currentDemon;
 }
 
-setInterval(function(){
+function demonCombat(){
     if(currentDemon.curHealth<=0){
         document.getElementById("console").innerHTML = "You beat " + currentDemon.name + "!! " + currentDemon.gold + " Gold was dropped!";
         gold += currentDemon.gold;
@@ -57,5 +59,4 @@ setInterval(function(){
         document.getElementById("power").innerHTML = power;
         currentDemon = spawnDemon();
     }
-
-}, 1000);
+}
