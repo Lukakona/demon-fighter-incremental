@@ -29,11 +29,20 @@
             <h2>YOU CANNOT UNDO THIS</h2>
             <img draggable=false onClick="resetData()" src="./img/resetconfirm.png" alt="CONFIRM RESET" class="center">
         </div>
+        <!--toggleable shop page-->
+        <div id="shop_screen">
+            <h4>Hehe... Whattaya buyin'?</h4>
+        </div>
         <!--main screen-->
         <div id="main_screen">
             <h3>Stored Power: <span id="power">0</span></h3>
             <h3>Gold: <span id="gold">0</span></h3>
-            <img draggable=false src="./img/CYPbutton.png" onClick="powerClick(1)" alt="Click to Charge Your Power!!" class="center">
+            <!--temp button, charge, and shop inline-->
+            <div class="button_row">
+                <img draggable=false src="img/locked.png" alt="Under Construction">
+                <img draggable=false src="./img/CYPbutton.png" onClick="powerClick(1)" alt="Click to Charge Your Power!!" class="center">
+                <img draggable=false src="./img/shop button.png" alt="Upgrade Shop">
+            </div>
             <h1><span id="demonname">A Demon Approaches!!</span></h1>
             <img src="./img/demoncanvas.png" id="demonimg" class="center">
             <h2>Demon Health: <span id="demoncurhp">?</span>/<span id="demonmaxhp">?</span></h2>

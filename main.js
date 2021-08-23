@@ -49,6 +49,19 @@ function resetData(){
     location.reload();
 }
 
+//hides all screens (should be used within the toggles, before setting a display)
+function hideAll(){
+    var about = document.getElementById("about_screen");
+    var main = document.getElementById("main_screen");
+    var resetScreen = document.getElementById("reset_screen");
+    var shop = document.getElementById("shop_screen");
+
+    main.style.display = "none";
+    about.style.display = "none";
+    resetScreen.style.display = "none";
+    shop.style.display = "none";
+}
+
 function mainLoop(){
     //if no stored current demon, spawn one. otherwise use stored demon
     if(typeof currentDemon=="undefined"){
