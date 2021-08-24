@@ -7,6 +7,6 @@ function toggleShop(){
         main.style.display = "block";
     } else {
         hideAll();
-        about.style.display = "block";
+        shop.style.display = "block";
     }
 }

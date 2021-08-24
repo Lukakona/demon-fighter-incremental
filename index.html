@@ -6,10 +6,12 @@
         <script type="text/javascript" src="img.js"></script>
         <script type="text/javascript" src="monstermanager.js"></script>
         <script type="text/javascript" src="headerscreens.js"></script>
+        <script type="text/javascript" src="shop.js"></script>
     </head>
     <body>
         <!--banner-->
         <div id="heading">
+            <img draggable=false onclick="homeScreen()" src="./img/home.png" alt="Home">;
             <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
             <img draggable=false onClick="loadGame()" src="./img/load.png" alt="Load Game">;
             <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">
@@ -31,17 +33,18 @@
         </div>
         <!--toggleable shop page-->
         <div id="shop_screen">
-            <h4>Hehe... Whattaya buyin'?</h4>
+            <h5>Upgrade Shop</h5>
+            <h4>Gold: <span id="shopgold">?</span></h4>
         </div>
         <!--main screen-->
         <div id="main_screen">
             <h3>Stored Power: <span id="power">0</span></h3>
-            <h3>Gold: <span id="gold">0</span></h3>
+            <h3>Gold: <span id="gold">?</span></h3>
             <!--temp button, charge, and shop inline-->
             <div class="button_row">
-                <img draggable=false src="img/locked.png" alt="Under Construction">
+                <img draggable=false src="img/locked.png" alt="Under Construction" class="center">
                 <img draggable=false src="./img/CYPbutton.png" onClick="powerClick(1)" alt="Click to Charge Your Power!!" class="center">
-                <img draggable=false src="./img/shop button.png" alt="Upgrade Shop">
+                <img draggable=false src="./img/shop button.png" onClick="toggleShop()" alt="Upgrade Shop" class="center">
             </div>
             <h1><span id="demonname">A Demon Approaches!!</span></h1>
             <img src="./img/demoncanvas.png" id="demonimg" class="center">

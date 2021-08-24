@@ -1,3 +1,10 @@
+//displays home screen
+function homeScreen(){
+    var main = document.getElementById("main_screen");
+    hideAll();
+    main.style.display = "block";
+}
+
 //about the author (me)
 function toggleAbout(){
     var about = document.getElementById("about_screen");

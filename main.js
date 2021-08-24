@@ -71,6 +71,7 @@ function mainLoop(){
         refreshDemons();
     }
     document.getElementById("gold").innerHTML = gold;
+    document.getElementById("shopgold").innerHTML = gold;
     demonCombat();
     setTimeout(mainLoop, 1000) //loops this function every second
 }
