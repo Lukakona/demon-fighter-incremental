@@ -10,3 +10,10 @@ function toggleShop(){
         shop.style.display = "block";
     }
 }
+
+function shopInfo(item){
+    switch(item){
+        case 'blessing':
+        console.log("Adds one stored power a second!");
+    }
+}

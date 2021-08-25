@@ -10,11 +10,11 @@
     </head>
     <body>
         <!--banner-->
-        <div id="heading">
+        <div id="option_banner" class="center image row">
             <img draggable=false onclick="homeScreen()" src="./img/home.png" alt="Home">;
             <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
             <img draggable=false onClick="loadGame()" src="./img/load.png" alt="Load Game">;
-            <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">
+            <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">;
         </div>
         <!--toggleable about page-->
         <div id="about_screen">
@@ -35,6 +35,12 @@
         <div id="shop_screen">
             <h5>Upgrade Shop</h5>
             <h4>Gold: <span id="shopgold">?</span></h4>
+            <div id="buyBlessing" onclick="shopInfo('blessing');">
+                <img id="blessingImg" src="img/villageprayer.png" alt="Village Blessing" class="center">
+            </div>
+            <div id="infobox" style="background-image:url(img/informationbanner.png);background-repeat:no-repeat;background-position:center;height:200px;">
+                <h1>hello</h1>
+            </div>
         </div>
         <!--main screen-->
         <div id="main_screen">

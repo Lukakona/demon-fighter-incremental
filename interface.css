@@ -63,6 +63,19 @@ p {
     width: auto;
 }
 
+.center.image.row {
+    margin:0 auto;
+    width:50%;
+}
+
+.product.unlocked {
+    opacity: 0;
+}
+
+.product.unlocked.off{
+    opacity: 1;
+}
+
 #heading {
     text-align: center;
 }
