@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head> 
+        <title>Demon Fighter!!</title>
         <link rel="stylesheet" type="text/css" href="interface.css" />
         <script type="text/javascript" src="main.js"></script>
         <script type="text/javascript" src="img.js"></script>
@@ -10,7 +11,7 @@
     </head>
     <body>
         <!--banner-->
-        <div id="option_banner" class="center image row">
+        <div id="option_banner" class="button_row">
             <img draggable=false onclick="homeScreen()" src="./img/home.png" alt="Home">;
             <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
             <img draggable=false onClick="loadGame()" src="./img/load.png" alt="Load Game">;
@@ -38,8 +39,11 @@
             <div id="buyBlessing" onclick="shopInfo('blessing');">
                 <img id="blessingImg" src="img/villageprayer.png" alt="Village Blessing" class="center">
             </div>
-            <div id="infobox" style="background-image:url(img/informationbanner.png);background-repeat:no-repeat;background-position:center;height:200px;">
-                <h1>hello</h1>
+            <!--information banner at the bottom-->
+            <div class="infobox" style="background-image:url(img/informationbanner.png);">
+                <img src="./img/unknown.png" id="productImg">
+                <div id="productTitle" class="infobox product title">-No Item Selected-</div>
+                <div id="productDescription" class="infobox product description">Click an item to see information!</div>
             </div>
         </div>
         <!--main screen-->

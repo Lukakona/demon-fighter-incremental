@@ -15,5 +15,10 @@ function shopInfo(item){
     switch(item){
         case 'blessing':
         console.log("Adds one stored power a second!");
+        const img = document.getElementById("productImg");
+        img.src = "./img/villageprayer.png";
+        document.getElementById("productTitle").innerHTML = "Village Blessing";
+        document.getElementById("productDescription").innerHTML = "Blessings from the villagers you protect grant one stored power a second!";
+        break;
     }
 }
