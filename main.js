@@ -24,21 +24,38 @@ function attackClick(){
     document.getElementById("demonattack").innerHTML = currentDemon.speed;
 }
 
+//check if theres saved data
+function hasSave(){
+    if(localStorage.currentDemon!="undefined" && localStorage.length>0){
+        console.log(localStorage);
+        return true;
+    }
+    return false;
+}
+
 //save values to local storage
 function saveGame(){
     localStorage.gold = gold;
     localStorage.rank = rank;
     localStorage.currentDemon = JSON.stringify(currentDemon);
+    localStorage.products = JSON.stringify(products);
     console.log("Game has been saved");
-    console.log(localStorage.currentDemon);
+    console.log(localStorage);
 }
 
 //load via localstorage values only if rank exists in localstorage
 function loadGame(){
-    if(!localStorage.rank || localStorage.rank==0) return;
+    console.log(hasSave());
+    if(!hasSave()){
+        createProducts();
+        console.log(products[0].name);
+        return;
+    }
+    createProducts();
     rank = Number(localStorage.rank);
     gold = Number(localStorage.gold);
     currentDemon = JSON.parse(localStorage.currentDemon);
+    products = JSON.parse(localStorage.products);
     console.log("Game has been loaded");
     console.log(rank);
     console.log(gold);
@@ -47,6 +64,19 @@ function loadGame(){
 function resetData(){
     localStorage.clear();
     location.reload();
+}
+
+//hides all screens (should be used within the toggles, before setting a display)
+function hideAll(){
+    var about = document.getElementById("about_screen");
+    var main = document.getElementById("main_screen");
+    var resetScreen = document.getElementById("reset_screen");
+    var shop = document.getElementById("shop_screen");
+
+    main.style.display = "none";
+    about.style.display = "none";
+    resetScreen.style.display = "none";
+    shop.style.display = "none";
 }
 
 function mainLoop(){
@@ -58,13 +88,14 @@ function mainLoop(){
         refreshDemons();
     }
     document.getElementById("gold").innerHTML = gold;
+    document.getElementById("shopgold").innerHTML = gold;
+    upgradeLoop();
     demonCombat();
-    setTimeout(mainLoop, 1000) //loops this function every second
 }
 
 //when the window loads, run these functions
 window.onload = function() {
     loadGame();
     saveGame();
-    mainLoop();
+    setInterval(mainLoop, 1000) //loop every second
 }

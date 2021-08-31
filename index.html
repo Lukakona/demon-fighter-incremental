@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head> 
+        <title>Demon Fighter!!</title>
         <link rel="stylesheet" type="text/css" href="interface.css" />
         <script type="text/javascript" src="main.js"></script>
         <script type="text/javascript" src="img.js"></script>
         <script type="text/javascript" src="monstermanager.js"></script>
         <script type="text/javascript" src="headerscreens.js"></script>
+        <script type="text/javascript" src="shop.js"></script>
+        <script type="text/javascript" src="upgrades.js"></script>
     </head>
     <body>
         <!--banner-->
-        <div id="heading">
+        <div id="option_banner" class="button_row">
+            <img draggable=false onclick="homeScreen()" src="./img/home.png" alt="Home">;
             <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
             <img draggable=false onClick="loadGame()" src="./img/load.png" alt="Load Game">;
-            <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">
+            <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">;
         </div>
         <!--toggleable about page-->
         <div id="about_screen">
@@ -29,11 +33,33 @@
             <h2>YOU CANNOT UNDO THIS</h2>
             <img draggable=false onClick="resetData()" src="./img/resetconfirm.png" alt="CONFIRM RESET" class="center">
         </div>
+        <!--toggleable shop page-->
+        <div id="shop_screen">
+            <h5>Upgrade Shop</h5>
+            <h4>Gold: <span id="shopgold">?</span></h4>
+            <div id="buyBlessing" onclick="shopInfo('blessing')" class="shop upgrade button">
+                <img id="blessingImg" src="img/villageprayer.png" alt="Village Blessing">
+            </div>
+            <!--information banner at the bottom-->
+            <div class="infobox" style="background-image:url(img/informationbanner.png);">
+                <img src="./img/unknown.png" id="productImg">
+                <div id="productTitle" class="infobox product title">-No Item Selected-</div>
+                <div id="productDescription" class="infobox product description">Click an item to see information!</div>
+                <div class="infobox product cost">Gold: <span id="productCost">?</span></div>
+                <div class="infobox product owned">Owned: <span id="productOwned">?</span></div>
+                <div class="infobox buy button" onclick="buyProduct()"> <img id="buyButton" src="./img/buylocked.png"></div>
+            </div>
+        </div>
         <!--main screen-->
         <div id="main_screen">
-            <h3>Stored Power: <span id="power">0</span></h3>
-            <h3>Gold: <span id="gold">0</span></h3>
-            <img draggable=false src="./img/CYPbutton.png" onClick="powerClick(1)" alt="Click to Charge Your Power!!" class="center">
+            <h3>Stored Power: <span id="power">?</span></h3>
+            <h3>Gold: <span id="gold">?</span></h3>
+            <!--temp button, charge, and shop inline-->
+            <div class="button_row">
+                <img draggable=false src="img/locked.png" alt="Under Construction" class="center">
+                <img draggable=false src="./img/CYPbutton.png" onClick="powerClick(1)" alt="Click to Charge Your Power!!" class="center">
+                <img draggable=false src="./img/shop button.png" onClick="toggleShop()" alt="Upgrade Shop" class="center">
+            </div>
             <h1><span id="demonname">A Demon Approaches!!</span></h1>
             <img src="./img/demoncanvas.png" id="demonimg" class="center">
             <h2>Demon Health: <span id="demoncurhp">?</span>/<span id="demonmaxhp">?</span></h2>
