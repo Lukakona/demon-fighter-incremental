@@ -5,6 +5,11 @@ async function upgradeLoop(){
         blessing();
         await wait(1000/products[0].amount);
     }
+    for (var i=0;i<products[1].amount;i++){
+        console.log("terrify: " + i);
+        terrify();
+        await wait(1000/products[1].amount);
+    }
 }
 
 async function wait(milliseconds) {
@@ -14,4 +19,9 @@ async function wait(milliseconds) {
 function blessing() {
     power += 1;
     document.getElementById("power").innerHTML = power;
+}
+
+function terrify() {
+    currentDemon.curHealth -= 1;
+    document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
 }
