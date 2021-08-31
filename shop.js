@@ -9,9 +9,10 @@ class product {
         this.img = img;
     }
 }
-/* product[0] -  */
+
 function createProducts(){
     products[0] = new product("Village Blessing", 0, 10, "Blessings from the villagers you protect grant one stored power a second!", "./img/villageprayer.png");
+    products[1] = new product("Terrify", 0, 10, "A steeled gaze to soften the resolve of even the most powerful demon.", "./img/terrify.png");
 }
 
 function toggleShop(){
@@ -64,6 +65,12 @@ function shopInfo(item){
                 currentProduct = 0;
             }
             break;
+        case 'terrify':
+            if(currentProduct == 1){
+                currentProduct = null;
+            } else{
+                currentProduct = 1;
+            }
     }
     updateShop();
 }

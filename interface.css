@@ -72,7 +72,16 @@ p {
     opacity: 1;
 }
 
+.upgrade.row.upper {
+    position: relative;
+    margin: auto;
+    border: 10px;
+    border-color:greenyellow;
+    width: 500px;
+    height: 171px;
+}
 .shop.upgrade.button {
+    display:inline;
     border: 10px;
     border-color: greenyellow;
     width: 211px;
