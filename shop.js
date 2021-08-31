@@ -29,14 +29,28 @@ function toggleShop(){
 }
 
 function updateShop(){
-    const img = document.getElementById("buyButton");
+    const imgBuy = document.getElementById("buyButton");
+    const imgIcon = document.getElementById("productImg");
     if(currentProduct != null){
         if(products[currentProduct].cost <= gold){
             console.log("buy button active");
-            img.src = "./img/buy.png";
+            imgBuy.src = "./img/buy.png";
         } else {
-            img.src = "./img/buylocked.png";
+            imgBuy.src = "./img/buylocked.png";
         }
+        imgIcon.src = products[currentProduct].img;
+        document.getElementById("productTitle").innerHTML = products[currentProduct].name;
+        document.getElementById("productDescription").innerHTML = products[currentProduct].description;
+        document.getElementById("productCost").innerHTML = products[currentProduct].cost;
+        document.getElementById("productOwned").innerHTML = products[currentProduct].amount;
+    }
+    else {
+        imgIcon.src = "./img/unknown.png";
+        document.getElementById("productTitle").innerHTML = "-No Item Selected-";
+        document.getElementById("productDescription").innerHTML = "Click an item to see information!";
+        document.getElementById("productCost").innerHTML = "?";
+        document.getElementById("productOwned").innerHTML = "?";
+        imgBuy.src = "./img/buylocked.png";
     }
 }
 
@@ -51,28 +65,20 @@ function shopInfo(item){
             }
             break;
     }
-    if(currentProduct != null){
-        updateShop();
-        img.src = products[currentProduct].img;
-        document.getElementById("productTitle").innerHTML = products[currentProduct].name;
-        document.getElementById("productDescription").innerHTML = products[currentProduct].description;
-        document.getElementById("productCost").innerHTML = products[currentProduct].cost;
-        document.getElementById("productOwned").innerHTML = products[currentProduct].amount;
-    } else {
-        img.src = "./img/unknown.png";
-        document.getElementById("productTitle").innerHTML = "-No Item Selected-";
-        document.getElementById("productDescription").innerHTML = "Click an item to see information!";
-        document.getElementById("productCost").innerHTML = "?";
-        document.getElementById("productOwned").innerHTML = "?";
-    }
+    updateShop();
 }
 
 function buyProduct(){
     if(currentProduct != null){
         if(products[currentProduct].cost <= gold){
+            gold -= products[currentProduct].cost;
+            products[currentProduct].amount +=1;
+            products[currentProduct].cost *= 2.7;
+            updateShop();
             console.log("purchased "+products[currentProduct].name);
+            saveGame();
         } else {
-            console.log("cannt afford "+products[currentProduct].name);
+            console.log("cannot afford "+products[currentProduct].name);
         }
     }
 }
