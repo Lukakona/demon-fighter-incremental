@@ -35,7 +35,12 @@ function saveGame(){
 
 //load via localstorage values only if rank exists in localstorage
 function loadGame(){
-    if(!localStorage.rank || localStorage.rank==0) return;
+    if(!localStorage.rank || localStorage.rank==0){
+        createProducts();
+        console.log(products[0].name);
+        return;
+    }
+    createProducts();
     rank = Number(localStorage.rank);
     gold = Number(localStorage.gold);
     currentDemon = JSON.parse(localStorage.currentDemon);

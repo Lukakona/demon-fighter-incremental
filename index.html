@@ -36,14 +36,17 @@
         <div id="shop_screen">
             <h5>Upgrade Shop</h5>
             <h4>Gold: <span id="shopgold">?</span></h4>
-            <div id="buyBlessing" onclick="shopInfo('blessing');">
-                <img id="blessingImg" src="img/villageprayer.png" alt="Village Blessing" class="center">
+            <div id="buyBlessing" onclick="shopInfo('blessing')" class="shop upgrade button">
+                <img id="blessingImg" src="img/villageprayer.png" alt="Village Blessing">
             </div>
             <!--information banner at the bottom-->
             <div class="infobox" style="background-image:url(img/informationbanner.png);">
                 <img src="./img/unknown.png" id="productImg">
                 <div id="productTitle" class="infobox product title">-No Item Selected-</div>
                 <div id="productDescription" class="infobox product description">Click an item to see information!</div>
+                <div class="infobox product cost">Gold: <span id="productCost">?</span></div>
+                <div class="infobox product owned">Owned: <span id="productOwned">?</span></div>
+                <div class="infobox buy button" onclick="buyProduct()"> <img id="buyButton" src="./img/buylocked.png"></div>
             </div>
         </div>
         <!--main screen-->
