@@ -22,6 +22,8 @@ function blessing() {
 }
 
 function terrify() {
-    currentDemon.curHealth -= 1;
-    document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
+    if(currentDemon.curHealth > 0){
+        currentDemon.curHealth -= 1;
+        document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
+    }
 }

@@ -80,7 +80,7 @@ function buyProduct(){
         if(products[currentProduct].cost <= gold){
             gold -= products[currentProduct].cost;
             products[currentProduct].amount +=1;
-            products[currentProduct].cost *= 2.7;
+            products[currentProduct].cost = Math.floor(products[currentProduct].cost * 2.7);
             updateShop();
             console.log("purchased "+products[currentProduct].name);
             saveGame();

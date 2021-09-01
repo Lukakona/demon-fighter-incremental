@@ -11,17 +11,23 @@ function powerClick(number){
 
 function attackClick(){
     //calculates an attack with stored power and updates board
-    console.log("attacking...");
     var dmg = power;
-    var flinch = Math.floor(dmg / 5);
-    power = 0;
+    var flinch = Math.floor(dmg / 2);
+    if(power - currentDemon.curHealth > 0){
+        power -= currentDemon.curHealth;
+    }else {
+        power = 0;
+    }
     currentDemon.curHealth -= dmg;
+    if(currentDemon.curHealth < 0){
+        currentDemon.curHealth = 0;
+    }
     dmg = 0;
-    currentDemon.speed += flinch;
+    attackCounter -= flinch;
     flinch = 0;
     document.getElementById("power").innerHTML = power;
     document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
-    document.getElementById("demonattack").innerHTML = currentDemon.speed;
+    document.getElementById("demonattack").innerHTML = attackCounter;
 }
 
 //check if theres saved data
