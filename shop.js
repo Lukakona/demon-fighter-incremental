@@ -1,19 +1,20 @@
 var products = [];
 var currentProduct = null;
 class product {
-    constructor(name, amount, cost, description, img) {
+    constructor(name, amount, cost, costMult, description, img) {
         this.name = name;
         this.amount = amount;
         this.cost = cost;
+        this.costMult = costMult;
         this.description = description;
         this.img = img;
     }
 }
 
 function createProducts(){
-    products[0] = new product("Village Blessing", 0, 10, "Blessings from the villagers you protect grant one stored power a second!", "./img/villageprayer.png");
-    products[1] = new product("Terrify", 0, 10, "A steeled gaze to soften the resolve of even the most powerful demon.", "./img/terrify.png");
-    products[2] = new product("Water Breathing", 0, 20, "Focusing on a unique breathing pattern for swordsmen adds stored power every click!", "./img/water.png");
+    products[0] = new product("Village Blessing", 0, 10, 1.5, "Blessings from the villagers you protect grant one stored power a second!", "./img/villageprayer.png");
+    products[1] = new product("Terrify", 0, 10, 1.5, "A steeled gaze to soften the resolve of even the most powerful demon.", "./img/terrify.png");
+    products[2] = new product("Water Breathing", 0, 20, 2.5, "Focusing on a unique breathing pattern for swordsmen adds stored power every click!", "./img/water.png");
 }
 
 function toggleShop(){
@@ -89,7 +90,7 @@ function buyProduct(){
         if(products[currentProduct].cost <= gold){
             gold -= products[currentProduct].cost;
             products[currentProduct].amount +=1;
-            products[currentProduct].cost = Math.floor(products[currentProduct].cost * 2.7);
+            products[currentProduct].cost = Math.floor(products[currentProduct].cost * products[currentProduct].costMult);
             updateShop();
             console.log("purchased "+products[currentProduct].name);
             saveGame();
