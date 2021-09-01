@@ -13,6 +13,7 @@ class product {
 function createProducts(){
     products[0] = new product("Village Blessing", 0, 10, "Blessings from the villagers you protect grant one stored power a second!", "./img/villageprayer.png");
     products[1] = new product("Terrify", 0, 10, "A steeled gaze to soften the resolve of even the most powerful demon.", "./img/terrify.png");
+    products[2] = new product("Water Breathing", 0, 20, "Focusing on a unique breathing pattern for swordsmen adds stored power every click!", "./img/water.png");
 }
 
 function toggleShop(){
@@ -71,6 +72,14 @@ function shopInfo(item){
             } else{
                 currentProduct = 1;
             }
+            break;
+        case 'water':
+            if(currentProduct == 2){
+                currentProduct = null;
+            } else {
+                currentProduct = 2;
+            }
+            break;
     }
     updateShop();
 }

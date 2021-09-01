@@ -82,9 +82,12 @@ async function attackTimer(){
             power = 0;
             document.getElementById("power").innerHTML = power;
             attackCounter = 0;
-            rank -= .1;
+            if(rank >= (currentDemon.rank+1)){
+                rank -= .1;
+            }
             currentDemon = spawnDemon();
             updateDemon();
+            saveGame();
         }
         await wait(1000/currentDemon.speed);
     }
