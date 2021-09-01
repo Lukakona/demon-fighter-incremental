@@ -1,12 +1,10 @@
 //uses purchased upgrades to calculate every second's values
 async function upgradeLoop(){
     for (var i=0;i<products[0].amount;i++) {
-        console.log("blessing: " + i);
         blessing();
         await wait(1000/products[0].amount);
     }
     for (var i=0;i<products[1].amount;i++){
-        console.log("terrify: " + i);
         terrify();
         await wait(1000/products[1].amount);
     }
@@ -22,8 +20,15 @@ function blessing() {
 }
 
 function terrify() {
-    if(currentDemon.curHealth > 0){
+    if(currentDemon.curHealth > 1){
         currentDemon.curHealth -= 1;
         document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
+    } else {
+        document.getElementById("console").innerHTML = currentDemon.name + " has bested you... But you fight again!";
+        power = 0;
+        document.getElementById("power").innerHTML = power;
+        attackCounter = 0;
+        currentDemon = spawnDemon();
+        updateDemon();
     }
 }
