@@ -4,8 +4,8 @@ var rank = 0;
 var currentDemon;
 
 //stores power every click
-function powerClick(number){
-    power = power + number;
+function powerClick(){
+    power = power + (1+products[2].amount);
     document.getElementById("power").innerHTML = power;
 }
 
