@@ -55,13 +55,30 @@ p {
 .button_row {
     display: flex;
     justify-content: center;
+    padding-left: 30%;
+    padding-right: 30%;
 }
 
 .center {
     display:block;
     margin-right: auto;
     margin-left: auto;
-    width: auto;
+    width: 30%;
+    height: 30%;
+}
+
+.attackbutton {
+    display: block;
+    margin: auto;
+    width: 20%;
+    height: 20%;
+}
+
+.demon.image {
+    display:block;
+    margin: auto;
+    width: 30%;
+    height: 30%;
 }
 
 .product.unlocked {
@@ -156,4 +173,8 @@ p {
 
 #shop_screen {
     display:none;
+}
+
+#main_screen {
+    
 }

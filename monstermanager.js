@@ -17,7 +17,7 @@ class Demon {
 function refreshDemons() {
     Demons[0] = new Demon("Avia, The Last of Her Brood",0,10,10,10,1,1,"./img/demon1.png");
     Demons[1] = new Demon("Ja'Kul, Eater of Villages",0,50,50,5,0,2,"./img/demon2.png");
-    Demons[2] = new Demon("Ivon, a Demon",0,25,25,10,1,1,"./img/demon3.png");
+    Demons[2] = new Demon("Ivon, a Demon",0,25,25,7,1,1,"./img/demon3.png");
     Demons[3] = new Demon("Malbil, the Infinite Oracle",1,30,30,10,1,2,"./img/demon4.png");
 }
 //spawns a new demon
@@ -31,16 +31,20 @@ function spawnDemon(){
     currentDemon = Demons[randomnum];
     return currentDemon;
 }
-
-function demonCombat(){
-    console.log(currentDemon.name);
+//updates the ui with the demons information
+function updateDemon(){
     const img = document.getElementById("demonimg");
     img.src = currentDemon.img;
-    attackCounter+=currentDemon.speed;
     document.getElementById("demonname").innerHTML = currentDemon.name;
     document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
     document.getElementById("demonmaxhp").innerHTML = currentDemon.maxHealth;
     document.getElementById("demonattack").innerHTML = attackCounter;
+}
+
+function demonCombat(){
+    console.log(currentDemon.name);
+    updateDemon();
+    attackCounter+=currentDemon.speed;
     if(currentDemon.curHealth<=0){
         document.getElementById("console").innerHTML = "You beat " + currentDemon.name + "!! " + currentDemon.gold + " Gold was dropped!";
         gold += currentDemon.gold;
@@ -52,8 +56,7 @@ function demonCombat(){
         }
         attackCounter = 0;
         currentDemon = spawnDemon();
-        const img = document.getElementById("demonimg");
-        img.src = currentDemon.img;
+        updateDemon();
         saveGame();
     }
     if(attackCounter >= 100){
@@ -62,5 +65,6 @@ function demonCombat(){
         document.getElementById("power").innerHTML = power;
         attackCounter = 0;
         currentDemon = spawnDemon();
+        updateDemon();
     }
 }
