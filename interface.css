@@ -9,6 +9,7 @@ h1 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 150%;
+    user-select: none;
 }
 
 h2 {
@@ -18,6 +19,7 @@ h2 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 150%;
+    user-select: none;
 }
 
 h3 {
@@ -27,6 +29,7 @@ h3 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 150%;
+    user-select: none;
 }
 
 /*shop gold count*/
@@ -37,6 +40,7 @@ h4 {
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
     font-size:200%;
+    user-select: none;
 }
 
 h5 {
@@ -46,17 +50,20 @@ h5 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size:250%;
+    user-select: none;
 }
 
 p {
     color: white;
     text-align: center;
+    user-select: none;
 }
 .button_row {
     display: flex;
     justify-content: center;
     padding-left: 30%;
     padding-right: 30%;
+    user-select: none;
 }
 
 .center {
@@ -65,6 +72,7 @@ p {
     margin-left: auto;
     width: 30%;
     height: 30%;
+    user-select: none;
 }
 
 .attackbutton {
@@ -72,6 +80,7 @@ p {
     margin: auto;
     width: 20%;
     height: 20%;
+    user-select: none;
 }
 
 .demon.image {
@@ -79,6 +88,7 @@ p {
     margin: auto;
     width: 30%;
     height: 30%;
+    user-select: none;
 }
 
 .product.unlocked {
@@ -103,6 +113,7 @@ p {
     border-color: greenyellow;
     width: 211px;
     margin: auto;
+    user-select: none;
 }
 
 .infobox{
@@ -157,6 +168,7 @@ p {
     width: 129px;
     left: 500px;
     bottom: -80px;
+    user-select: none;
 }
 
 #heading {
