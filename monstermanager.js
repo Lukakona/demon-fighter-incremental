@@ -16,12 +16,12 @@ class Demon {
 }
 //idk their health never reset so im using this.
 function refreshDemons() {
-    Demons[0] = new Demon("Avia, The Last of Her Brood",0,10,10,10,1,1,"./img/demons/avia.png");
+    Demons[0] = new Demon("Avia, The Last of Her Brood",0,10,10,10,0,1,"./img/demons/avia.png");
     Demons[1] = new Demon("Ja'Kul, Eater of Villages",0,50,50,5,0,2,"./img/demons/jakul.png");
-    Demons[2] = new Demon("Ivon, a Demon",0,25,25,7,1,1,"./img/demons/ivon.png");
+    Demons[2] = new Demon("Ivon, a Demon",0,25,25,7,0,1,"./img/demons/ivon.png");
     Demons[3] = new Demon("Malbil, the Infinite Oracle",1,30,30,10,1,2,"./img/demons/malbil.png");
     Demons[4] = new Demon("Kaeli, the Forgetful",1,20,20,25,1,3,"./img/demons/kaeli.png");
-    Demons[5] = new Demon("Nek, of the Thoroughly Content",1,50,50,15,5,3,"./img/demons/nek.png");
+    Demons[5] = new Demon("Nek, of the Thoroughly Content",1,50,50,15,1,3,"./img/demons/nek.png");
 }
 //spawns a new demon
 function spawnDemon(){
@@ -30,7 +30,7 @@ function spawnDemon(){
     var demonNum;
     var foundDemon = false;
     do{
-        rankNum = Math.floor(Math.random() * ((1+rank) - .2));
+        rankNum = Math.floor(Math.random() * ((1+rank) - .5));
     }while(rankNum>=2); //ensure the number wont hit the rank cap (since theres a chance!)
     console.log("rank: " + rankNum);
     while(foundDemon == false) {
@@ -55,7 +55,7 @@ function updateDemon(){
 
 function demonCombat(){
     updateDemon();
-    if(currentDemon.curHealth<=0){
+    if(currentDemon.curHealth <= 0){
         document.getElementById("console").innerHTML = "You beat " + currentDemon.name + "!! " + currentDemon.gold + " Gold was dropped!";
         gold += currentDemon.gold;
         document.getElementById("gold").innerHTML = gold;
@@ -70,6 +70,7 @@ function demonCombat(){
         saveGame();
     }
     attackTimer();
+    demonLoop();
 }
 
 async function attackTimer(){
@@ -90,5 +91,20 @@ async function attackTimer(){
             saveGame();
         }
         await wait(1000/currentDemon.speed);
+    }
+}
+
+function vigor() {
+    if(currentDemon.curHealth < currentDemon.maxHealth){
+        currentDemon.curHealth += 1;
+        console.log("adding hp: " + currentDemon.curHealth);
+        document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
+    }
+}
+
+async function demonLoop() {
+    for (var i=0;i < currentDemon.vigor;i++){
+        vigor();
+        await wait(1000/currentDemon.vigor);
     }
 }
