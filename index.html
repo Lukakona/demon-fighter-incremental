@@ -9,14 +9,15 @@
         <script type="text/javascript" src="headerscreens.js"></script>
         <script type="text/javascript" src="shop.js"></script>
         <script type="text/javascript" src="upgrades.js"></script>
+        <script type="text/javascript" src="bossfight.js"></script>
     </head>
     <body>
         <!--banner-->
         <div id="option_banner" class="button_row">
-            <img draggable=false onclick="homeScreen()" src="./img/home.png" alt="Home">;
-            <img draggable=false onClick="toggleAbout()" src="./img/about.png" alt="About">;
-            <img draggable=false onClick="loadGame()" src="./img/load.png" alt="Load Game">;
-            <img draggable=false onClick="toggleReset()" src="./img/reset.png" alt="Reset Data">;
+            <img draggable=false onclick="homeScreen()" src="./img/ui/home.png" alt="Home">;
+            <img draggable=false onClick="toggleAbout()" src="./img/ui/about.png" alt="About">;
+            <img draggable=false onClick="loadGame()" src="./img/ui/load.png" alt="Load Game">;
+            <img draggable=false onClick="toggleReset()" src="./img/ui/reset.png" alt="Reset Data">;
         </div>
         <!--toggleable about page-->
         <div id="about_screen">
@@ -31,7 +32,7 @@
             <h2>WARNING</h2>
             <h3>Hitting the confirmation below will reset all saved values.</h3>
             <h2>YOU CANNOT UNDO THIS</h2>
-            <img draggable=false onClick="resetData()" src="./img/resetconfirm.png" alt="CONFIRM RESET" class="center">
+            <img draggable=false onClick="resetData()" src="./img/ui/resetconfirm.png" alt="CONFIRM RESET" class="center">
         </div>
         <!--toggleable shop page-->
         <div id="shop_screen">
@@ -39,24 +40,57 @@
             <h4>Gold: <span id="shopgold">?</span></h4>
             <div class="upgrade row upper">
                 <div id="buyBlessing" onclick="shopInfo('blessing')" class="shop upgrade button">
-                    <img id="blessingImg" src="img/villageprayer.png" alt="Village Blessing">
+                    <img id="blessingImg" src="img/upgrades/villageprayer.png" alt="Village Blessing">
                 </div>
                 <div id="buyTerrify" onclick="shopInfo('terrify')" class="shop upgrade button">
-                    <img id="terrifyImg" src="img/terrify.png" alt="Terrify">
+                    <img id="terrifyImg" src="img/upgrades/terrify.png" alt="Terrify">
                 </div>
                 <div id="buyWaterBreathing" onclick="shopInfo('water')" class="shop upgrade button">
-                    <img id="waterImg" src="img/water.png" alt="Water Breathing">
+                    <img id="waterImg" src="img/upgrades/water.png" alt="Water Breathing">
                 </div>
             </div>
             <!--information banner at the bottom-->
-            <div class="infobox" style="background-image:url(img/informationbanner.png);">
-                <img src="./img/unknown.png" id="productImg">
+            <div class="infobox" style="background-image:url(img/ui/informationbanner.png);">
+                <img src="./img/upgrades/unknown.png" id="productImg">
                 <div id="productTitle" class="infobox product title">-No Item Selected-</div>
                 <div id="productDescription" class="infobox product description">Click an item to see information!</div>
                 <div class="infobox product cost">Gold: <span id="productCost">?</span></div>
                 <div class="infobox product owned">Owned: <span id="productOwned">?</span></div>
-                <div class="infobox buy button" onclick="buyProduct()"> <img id="buyButton" src="./img/buylocked.png"></div>
+                <div class="infobox buy button" onclick="buyProduct()"> <img id="buyButton" src="./img/ui/buylocked.png"></div>
             </div>
+        </div>
+        <!--boss selection-->
+        <div id="boss_selection">
+            <div class="boss icon box">
+                <div id="boss1" onclick="bossFight(0)" class="boss button">
+                    <img id="boss1Img" src="img/ui/bosslocked.png" alt="Boss 1">
+                </div>
+                <div id="boss2" onclick="bossFight(1)" class="boss button">
+                    <img id="boss2Img" src="img/ui/bosslocked.png" alt="Boss 2">
+                </div>
+                <div id="boss3" onclick="bossFight(2)" class="boss button">
+                    <img id="boss3Img" src="img/ui/bosslocked.png" alt="Boss 3">
+                </div>
+                <div id="boss4" onclick="bossFight(3)" class="boss button">
+                    <img id="boss4Img" src="img/ui/bosslocked.png" alt="Boss 4">
+                </div>
+            </div>
+            <div id="bossSelectBack" onclick="toggleBossSelect()" class="back button">
+                <img id="backImg" src="img/ui/back.png" alt="Back">
+            </div>
+        </div>
+        <!--boss fight screen-->
+        <div id="boss_fight">
+            <h3>Stored Power: <span id="powerB">?</span></h3>
+            <!--temp button, charge, and shop inline-->
+            <h1><span id="bossname">A Demon Approaches!!</span></h1>
+            <img src="./img/demons/demoncanvas.png" id="bossimg" class="demon image">
+            <h2>Demon Health: <span id="bosscurhp">?</span>/<span id="bossmaxhp">?</span></h2>
+            <h2>Demon Attack Meter: <span id="bossattack">?</span> / 100</h2>
+            <img draggable=false src="./img/ui/CYPbutton.png" onClick="powerClick()" alt="Click to Charge Your Power!!" class="attackbutton">
+            <img draggable=false src="./img/ui/attack.png" onClick="attackClick()" alt="Click to Attack!!" class="attackbutton">
+            <img draggable=false src="./img/ui/return.png" onclick="homeScreen()" alt="Return to Home" class="bossreturn">
+            <h3><span id="bossconsole"></span></h3>
         </div>
         <!--main screen-->
         <div id="main_screen">
@@ -64,15 +98,15 @@
             <h3>Gold: <span id="gold">?</span></h3>
             <!--temp button, charge, and shop inline-->
             <div class="button_row">
-                <img draggable=false src="img/locked.png" alt="Under Construction" class="center">
-                <img draggable=false src="./img/CYPbutton.png" onClick="powerClick()" alt="Click to Charge Your Power!!" class="center">
-                <img draggable=false src="./img/shop button.png" onClick="toggleShop()" alt="Upgrade Shop" class="center">
+                <img draggable=false src="img/ui/locked.png" onClick="toggleBossSelect()" alt="Under Construction" class="center">
+                <img draggable=false src="./img/ui/CYPbutton.png" onClick="powerClick()" alt="Click to Charge Your Power!!" class="center">
+                <img draggable=false src="./img/ui/shop button.png" onClick="toggleShop()" alt="Upgrade Shop" class="center">
             </div>
             <h1><span id="demonname">A Demon Approaches!!</span></h1>
-            <img src="./img/demoncanvas.png" id="demonimg" class="demon image">
+            <img src="./img/demons/demoncanvas.png" id="demonimg" class="demon image">
             <h2>Demon Health: <span id="demoncurhp">?</span>/<span id="demonmaxhp">?</span></h2>
             <h2>Demon Attack Meter: <span id="demonattack">?</span> / 100</h2>
-            <img draggable=false src="./img/attack.png" onClick="attackClick()" alt="Click to Attack!!" class="attackbutton">
+            <img draggable=false src="./img/ui/attack.png" onClick="attackClick()" alt="Click to Attack!!" class="attackbutton">
             <h3><span id=console></span></h3>
         </div>
     </body>

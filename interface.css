@@ -83,11 +83,35 @@ p {
     user-select: none;
 }
 
+.bossreturn{
+    display: none;
+    margin: auto;
+    width: 20%;
+    height: 20%;
+    user-select: none;
+}
+
 .demon.image {
     display:block;
     margin: auto;
     width: 30%;
     height: 30%;
+    user-select: none;
+}
+
+.boss.icon.box {
+    position: relative;
+    margin: auto;
+    margin-top: 5%;
+    width: 812px;
+    height: 600px;
+}
+
+.boss.button {
+    display:inline;
+    margin: auto;
+    width: 200px;
+    height: 200px;
     user-select: none;
 }
 
@@ -171,6 +195,12 @@ p {
     user-select: none;
 }
 
+.back.button {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    margin: auto;
+}
 #heading {
     text-align: center;
 }
@@ -184,6 +214,14 @@ p {
 }
 
 #shop_screen {
+    display:none;
+}
+
+#boss_fight {
+    display:none;
+}
+
+#boss_selection {
     display:none;
 }
 
