@@ -1,6 +1,16 @@
 body {
     background-color:black;
     background-image: url(img/ui/tempbgtile.png);
+    overflow:hidden;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    
+}
+
+body::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }
 
 h1 {
@@ -59,6 +69,21 @@ p {
     text-align: center;
     user-select: none;
 }
+
+.demon.name.text{
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:2em;
+    min-width: 1em;
+}
+
+.fishbowl{
+    position: absolute;
+    z-index: 1;
+    height:100%;
+    width:100%;
+}
+
 .button_row {
     display: flex;
     justify-content: center;
@@ -90,6 +115,55 @@ p {
     width: 20%;
     height: 20%;
     user-select: none;
+}
+
+.demon.border.div{
+    position: relative;
+    user-select: none;
+    -moz-user-select: none;
+    margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    width: fit-content;
+}
+
+.demon.border{
+    position: relative;
+    z-index: 1;
+    width:100%;
+    min-width: 20em;
+}
+
+.demon.portrait{
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: fill;
+}
+
+.demon.nameplate.div{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -moz-user-select: none;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    padding-inline: 3em;
+    width: fit-content;
+}
+
+.demon.nameplate{
+    position: relative;
+    width: 100%;
+    min-width: 10em;
 }
 
 .demon.image {
