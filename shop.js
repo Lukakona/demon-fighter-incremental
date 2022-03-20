@@ -12,9 +12,9 @@ class product {
 }
 
 function createProducts(){
-    products[0] = new product("Village Blessing", 0, 10, 1.5, "Blessings from the villagers you protect grant one stored power a second!", "./img/villageprayer.png");
-    products[1] = new product("Terrify", 0, 10, 1.5, "A steeled gaze to soften the resolve of even the most powerful demon.", "./img/terrify.png");
-    products[2] = new product("Water Breathing", 0, 20, 2.5, "Focusing on a unique breathing pattern for swordsmen adds stored power every click!", "./img/water.png");
+    products[0] = new product("Village Blessing", 0, 10, 1.5, "Blessings from the villagers you protect grant one stored power a second!", "./img/upgrades/villageprayer.png");
+    products[1] = new product("Terrify", 0, 10, 1.5, "A steeled gaze to soften the resolve of even the most powerful demon.", "./img/upgrades/terrify.png");
+    products[2] = new product("Water Breathing", 0, 20, 2.5, "Focusing on a unique breathing pattern for swordsmen adds stored power every click!", "./img/upgrades/water.png");
 }
 
 function toggleShop(){
@@ -37,9 +37,9 @@ function updateShop(){
     if(currentProduct != null){
         if(products[currentProduct].cost <= gold){
             console.log("buy button active");
-            imgBuy.src = "./img/buy.png";
+            imgBuy.src = "./img/ui/buy.png";
         } else {
-            imgBuy.src = "./img/buylocked.png";
+            imgBuy.src = "./img/ui/buylocked.png";
         }
         imgIcon.src = products[currentProduct].img;
         document.getElementById("productTitle").innerHTML = products[currentProduct].name;
@@ -48,12 +48,12 @@ function updateShop(){
         document.getElementById("productOwned").innerHTML = products[currentProduct].amount;
     }
     else {
-        imgIcon.src = "./img/unknown.png";
+        imgIcon.src = "./img/upgrades/unknown.png";
         document.getElementById("productTitle").innerHTML = "-No Item Selected-";
         document.getElementById("productDescription").innerHTML = "Click an item to see information!";
         document.getElementById("productCost").innerHTML = "?";
         document.getElementById("productOwned").innerHTML = "?";
-        imgBuy.src = "./img/buylocked.png";
+        imgBuy.src = "./img/ui/buylocked.png";
     }
 }
 

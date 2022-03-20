@@ -1,4 +1,5 @@
 var attackCounter = 0;
+var spawningDemon = false;
 //define demons
 let Demons = [];
 
@@ -25,72 +26,87 @@ function refreshDemons() {
 }
 //spawns a new demon
 function spawnDemon(){
+    spawningDemon=true;
     refreshDemons();
     var rankNum;
     var demonNum;
     var foundDemon = false;
-    do{
-        rankNum = Math.floor(Math.random() * ((1+rank) - .5));
-    }while(rankNum>=2); //ensure the number wont hit the rank cap (since theres a chance!)
-    console.log("rank: " + rankNum);
-    while(foundDemon == false) {
-        demonNum = Math.floor(Math.random() * 6); //CHANGE THIS VALUE WHEN YOU ADD A NEW DEMON!!!!!!!!!
-        if(Demons[demonNum].rank == rankNum)    {
-            foundDemon = true;
+    currentDemon = null;
+    setTimeout(function(){
+        do{
+            rankNum = Math.floor(Math.random() * ((1+rank) - .5));
+        }while(rankNum>=2); //ensure the number wont hit the rank cap (since theres a chance!)
+        console.log("rank: " + rankNum);
+        while(foundDemon == false) {
+            demonNum = Math.floor(Math.random() * 6); //CHANGE THIS VALUE WHEN YOU ADD A NEW DEMON!!!!!!!!!
+            if(Demons[demonNum].rank == rankNum)    {
+                foundDemon = true;
+            }
         }
-    }
-    console.log("demon number: " + demonNum);
-    currentDemon = Demons[demonNum];
-    return currentDemon;
+        attackCounter = 0;
+        currentDemon=Demons[demonNum];
+    }, 2000);
 }
 //updates the ui with the demons information
 function updateDemon(){
-    const img = document.getElementById("demonimg");
-    img.src = currentDemon.img;
-    document.getElementById("demonname").innerHTML = currentDemon.name;
-    document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
-    document.getElementById("demonmaxhp").innerHTML = currentDemon.maxHealth;
-    document.getElementById("demonattack").innerHTML = attackCounter;
+    if(currentDemon!=null){
+        const img = document.getElementById("demonimg");
+        img.src = currentDemon.img;
+        document.getElementById("demonname").innerHTML = currentDemon.name;
+        document.getElementById("demoncurhp").innerHTML = currentDemon.curHealth;
+        document.getElementById("demonmaxhp").innerHTML = currentDemon.maxHealth;
+        document.getElementById("demonattack").innerHTML = attackCounter;
+    }
 }
 
 function demonCombat(){
-    updateDemon();
-    if(currentDemon.curHealth <= 0){
-        document.getElementById("console").innerHTML = "You beat " + currentDemon.name + "!! " + currentDemon.gold + " Gold was dropped!";
-        gold += currentDemon.gold;
-        document.getElementById("gold").innerHTML = gold;
-        //slightly raises the players rank for killing strong monsters
-        if((rank-1)<=currentDemon.rank){
-            rank += .1;
-            console.log(rank);
-        }
-        attackCounter = 0;
-        currentDemon = spawnDemon();
+    if(currentDemon!=null){
         updateDemon();
-        saveGame();
+        attackTimer();
+        demonLoop();
     }
-    attackTimer();
-    demonLoop();
+    else if(currentDemon==null && spawningDemon==false){
+        spawnDemon();
+    }
+}
+
+function currentDemonBeaten(){
+    document.getElementById("console").innerHTML = "You beat " + currentDemon.name + "!! " + currentDemon.gold + " Gold was dropped!";
+    gold += currentDemon.gold;
+    document.getElementById("gold").innerHTML = gold;
+    //slightly raises the players rank for killing strong monsters
+    if((rank-1)<=currentDemon.rank){
+        rank += .1;
+        console.log(rank);
+    }
+    spawnDemon();
+    updateDemon();
+    saveGame();
 }
 
 async function attackTimer(){
-    for (var i=0;i<currentDemon.speed;i++) {
-        if(attackCounter < 100) {
-            attackCounter+=1;
-            document.getElementById("demonattack").innerHTML = attackCounter;
-        } else {
-            document.getElementById("console").innerHTML = currentDemon.name + " has bested you... But you fight again!";
-            power = 0;
-            document.getElementById("power").innerHTML = power;
-            attackCounter = 0;
-            if(rank >= (currentDemon.rank+1)){
-                rank -= .1;
+    if(currentDemon != null){
+        var tempSpeed = currentDemon.speed;
+        for (var i=0;i<tempSpeed;i++) {
+            if(attackCounter < 100) {
+                attackCounter+=1;
+                document.getElementById("demonattack").innerHTML = attackCounter;
+            } else {
+                document.getElementById("console").innerHTML = currentDemon.name + " has bested you... But you fight again!";
+                power = 0;
+                document.getElementById("power").innerHTML = power;
+                if(rank >= (currentDemon.rank+1)){
+                    rank -= .1;
+                }
+                spawnDemon();
+                updateDemon();
+                saveGame();
             }
-            currentDemon = spawnDemon();
-            updateDemon();
-            saveGame();
+            if(currentDemon == null){
+                i = tempSpeed;
+            }
+            await wait(1000/tempSpeed);
         }
-        await wait(1000/currentDemon.speed);
     }
 }
 
@@ -103,8 +119,11 @@ function vigor() {
 }
 
 async function demonLoop() {
-    for (var i=0;i < currentDemon.vigor;i++){
-        vigor();
-        await wait(1000/currentDemon.vigor);
+    if(currentDemon != null){
+    var tempVigor = currentDemon.vigor;
+        for (var i=0;i < tempVigor;i++){
+            vigor();
+            await wait(1000/tempVigor);
+        }
     }
 }
