@@ -7,3 +7,5 @@ guest artwork by
 	
 	ned - @MissMoenstyrwyn
 	sdw - @Deadweight
+	jop - @JosephOPossum
+	ref - @ratwithsillyhat
